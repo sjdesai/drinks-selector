@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-create-new-wheel',
+  selector: 'create-new-wheel',
   templateUrl: './create-new-wheel.page.html',
   styleUrls: ['./create-new-wheel.page.scss'],
 })
