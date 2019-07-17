@@ -1,3 +1,4 @@
+import { DrinkType } from './../../dto/DrinkType';
 import { CreateNewWheelPage } from './../create-new-wheel/create-new-wheel.page';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
@@ -18,19 +19,19 @@ export class HomePage implements OnInit{
     this.drawWheel();
   }
 
-  data = [
-          {'label':'Vodka Soda',  'value': 1}, // padding
-          {'label': "Rum and Coke",  'value': 1}, // font-family
-          {'label': "Vodka Energy Drink",  'value': 1}, // color
-          {'label':'Mojito',  'value': 1}, // font-weight
-          {'label': "Tequila Shot",  'value': 1}, // font-size
+  data: DrinkType[] = [
+          {'label':'Vodka Soda',  'prob': 1}, // padding
+          {'label': "Rum and Coke",  'prob': 1}, // font-family
+          {'label': "Vodka Energy Drink",  'prob': 1}, // color
+          {'label':'Mojito',  'prob': 1}, // font-weight
+          {'label': "Tequila Shot",  'prob': 1}, // font-size
           
   ];
 
   drawWheel(){
     var padding = {top: 20, right: 20, bottom: 0, left: 20};
 
-    var w = 380 - padding.left - padding.right;
+    var w = 360 - padding.left - padding.right;
     var h = 550 - padding.top  - padding.bottom;
     var r = Math.min(w, h) / 2;
     var picked: number = 100000;
@@ -52,7 +53,7 @@ export class HomePage implements OnInit{
         var vis = container
             .append("g");
             
-        var pie = d3.pie().value(function(d){return d.value;}).sort(null);
+        var pie = d3.pie().value(function(d){return d.prob;}).sort(null);
 
         // declare an arc generator function
         var arc = d3.arc()
